@@ -1,3 +1,5 @@
+// 32. Framework Aside: Faking Namespace
+// Namespace: A container for variables and functions; typically to keep variables and functions with the same name separate
 var greet = 'Hello';
 var greet = 'Hola';
 
