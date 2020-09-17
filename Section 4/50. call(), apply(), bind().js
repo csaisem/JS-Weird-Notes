@@ -1,3 +1,4 @@
+// call(), apply(), and bind() are methods you can use on objects with methods (functions)
 var person = {
     firstName: 'Charles',
     lastName: 'Mesias',
@@ -6,36 +7,42 @@ var person = {
         return fullName
     }
 }
-// There are two ways to use the bind method
+
+// There are two ways to use the bind method //
+
+// 1st method: add the dot bind method at the end of the function 
+// "this" will reference the getFullName method (function) of the person object
 var logName = function(lang1, lang2) {
 
     console.log('Logged: ' + this.getFullName())
 
-}.bind(person) // 1st., it can be added on the end of a function object and allows the 
-               // this keyword to reference the method of the object passed on the 
-               // .bind parameter
-logName();
+}.bind(person)
 
-var logPersonName = logName.bind(person); //bind the person object to the logName object
+logName(); // execute it 
 
-// 2nd. method is to create a new variable and assign the .bind to the function object. 
-// The .bind creates a copy of the logName function object essentially replaces the this
-// keyword with the person argument
-logPersonName();
+// 2nd method: create a new variable and assign the .bind at the end of the function. 
+// The .bind creates a copy of the logName function and the "this" variable will now point to
+// the person method (function)
+var logPersonName = logName.bind(person); //bind the person object to the logName function
 
-logName.call(person, 'es', 'en');
-// .call invokes the function, but controls where the this variable points to
+logPersonName(); // execute it
+
+
+
+// .call invokes the function, but controls where "this" points to
 // It does not make a copy like .bind, but executes the function
+logName.call(person, 'es', 'en');
 
-logName.apply(person, ['es', 'en']);
+
 // .apply does the same as .call but wants the parameters in an array
+logName.apply(person, ['es', 'en']);
 
+// Becuase .apply and .call executes the function, it can also be added at the end of a function expression to invoke it
 (function(lang1, lang2) {
 
     console.log('Logged: ' + this.getFullName())
 
 }).apply(person, ['es', 'en']);
-// Becuase .apply and .call executes the function, it can also be added at the end of a function expression to invoke it
 
 
 // function borrowing
@@ -49,6 +56,6 @@ console.log(person.getFullName.apply(person2)) // apply the getFullName method f
 
 
 // function currying - creating a copy of a function but with preset parameters
-var multiply = (a, b) => a*b 
+var multiply = (a, b) => a * b 
 var multiplyByTwo = multiply.bind(this, 2); // passes on 2 as a permanent parameter of a
 console.log(multiplyByTwo(4))

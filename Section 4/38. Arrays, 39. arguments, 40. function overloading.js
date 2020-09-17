@@ -31,7 +31,7 @@ function greet(firstName, lastName) {
 
 greet('Charles');
 
-//SPREAD is something newly impremented in JS in which you can add extra arguments saved to a parameter using ...parameter in the function paramenter
+//SPREAD is something newly impremented in JS in which you can add extra arguments saved to a parameter using "...parameter" in the function paramenter
 
 // 40. FRAMEWORK ASIDE: Function Overloading
 var greet = function (firstName, lastName, language) {

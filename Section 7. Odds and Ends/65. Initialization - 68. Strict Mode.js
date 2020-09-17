@@ -40,8 +40,8 @@ console.log(typeof null) // returns object, its a bug
 
 // 67. Stict Mode
 
-//'use strict' // must go top of file or function. In this mode you cannot set a variable without
-             // declaring it first
+// Strict mode is a mode in which a variable cannot be set without declaring it first.
+// The purpose of this is to avoid creating mistakes made by creating one vairable and using another with a similar name
 
 function logNewPerson() {
     'use strict';
