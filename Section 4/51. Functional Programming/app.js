@@ -37,13 +37,17 @@ var checkPastLimit = function(limiter, item) {
 }
 var arr4 = mapForEach(arr1, checkPastLimit.bind(this, 1));
 console.log(arr4)
+/* alternative view, but not syntactically allowable:
+var arr4 = mapForEach(arr1, checkPastLimit(1, arr1){
+    return arr1 > 1
+}) */
 
 var checkPastLimitSimplified = function(limiter) {
     return function(limiter, item) {
         return item > limiter
     }.bind(this, limiter);
 } 
-
+// 
 var arr5 = mapForEach(arr1, checkPastLimitSimplified(1))
 console.log(arr5)
 
